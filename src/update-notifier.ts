@@ -20,7 +20,6 @@ export const CHECK_COMMAND = "check-update";
 export const DESCRIBE_COMMAND = "describe";
 export const SCHEMA_COMMAND = "schema";
 export const COMPLETION_COMMAND = "completion";
-export const SERVE_COMMAND = "serve";
 
 /**
  * The machine-stream guarantees, published through `describe` so consumers can
@@ -35,7 +34,7 @@ export const NOTIFIER_CONTRACT = {
     "CI is set",
     "stderr is not a TTY",
     "--format is json, including a configured default format",
-    "the command is check-update, describe, schema, completion, serve, or the internal cache refresh",
+    "the command is check-update, describe, schema, completion, or the internal cache refresh",
   ],
   optOutEnv: "BULK_NO_UPDATE_NOTIFIER",
 } as const;
@@ -229,8 +228,6 @@ export function isNotifierAllowed(ctx: Omit<NotifyDecision, "cache" | "currentVe
   // where stderr *is* a TTY. Without this the notice would print on every shell
   // start and the background refresh would spawn on every shell start.
   if (ctx.argv.includes(COMPLETION_COMMAND)) return false;
-  // `serve` speaks a protocol on stdout and its stderr is the host's server log.
-  if (ctx.argv.includes(SERVE_COMMAND)) return false;
   return true;
 }
 

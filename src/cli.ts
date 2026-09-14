@@ -27,7 +27,7 @@ for (const stream of [process.stdout, process.stderr])
   });
 
 // The configuration is read once, up front, so a malformed file is one clear
-// error before any command runs. `serve` and the internal refresh skip nothing:
+// error before any command runs. The internal refresh reads the same file.
 // they read the same file.
 try {
   initializeRuntime();
@@ -312,19 +312,6 @@ program
       toolName: packageName,
       toolVersion: version,
     });
-  });
-
-program
-  .command("serve")
-  .description("Serve the plugins' list and query commands over a machine protocol")
-  .argument("<protocol>", "Protocol: mcp")
-  .addHelpText(
-    "after",
-    "\nSpeaks the Model Context Protocol over stdio. One tool per plugin command that reads a\ncatalogue or looks keys up; nothing downloads.\n\n  claude mcp add bulk -- bulk serve mcp",
-  )
-  .action(async (protocol: string) => {
-    const { serveAction } = await import("./commands/serve.js");
-    return serveAction(protocol);
   });
 
 try {

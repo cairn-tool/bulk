@@ -66,7 +66,6 @@ function buildHints(): Map<string, Hint> {
 /** Positional arguments whose values are a fixed vocabulary. */
 const ARGUMENT_CHOICES: Record<string, string[]> = {
   completion: [...SHELLS],
-  serve: ["mcp"],
 };
 
 const FILE_NAMES = new Set(["file", "files", "path", "paths", "schema", "config"]);

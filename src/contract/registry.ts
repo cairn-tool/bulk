@@ -177,19 +177,6 @@ const STATIC: CommandContract[] = [
     writes: false,
     network: false,
   },
-  {
-    ...base,
-    id: "serve",
-    formats: null,
-    defaultFormat: null,
-    formatConfigurable: false,
-    outputSchema: null,
-    exitCodes: [OK("Client disconnected"), USAGE],
-    writes: false,
-    network: true,
-    notes:
-      "stdout carries JSON-RPC frames; diagnostics go to stderr. Tools are the plugins' list and query commands; nothing downloads.",
-  },
 ];
 
 function generated(): CommandContract[] {

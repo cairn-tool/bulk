@@ -25,8 +25,8 @@ bulk crossref query 10.1080/16000870.2018.1440870   # a Crossref record from a D
   cached.
 - **Nothing is hardcoded** but the user configuration and cache directories; the archive root and
   every destination come from `--dest`, `BULK_ARCHIVE` or `~/.config/bulk/config.yml`.
-- `--format llm|human|json` on every command, a published result contract (`bulk describe`), shell
-  completion, and an MCP server (`bulk serve mcp`) exposing the list and query commands as tools.
+- `--format llm|human|json` on every command, a published result contract (`bulk describe`), and
+  shell completion.
 
 ## Documentation
 

@@ -2,7 +2,7 @@
   "name": "@cairn-tool/bulk",
   "version": "0.0.0-development",
   "type": "module",
-  "description": "Pull publisher catalogues into a document archive and look titles up by identifier — one plugin per data source",
+  "description": "Pull publisher catalogues into a document archive and look titles up by identifier \u2014 one plugin per data source",
   "license": "MIT",
   "author": "Bryan Stockus",
   "keywords": [
@@ -13,8 +13,7 @@
     "ntsb",
     "arxiv",
     "crossref",
-    "internet-archive",
-    "mcp"
+    "internet-archive"
   ],
   "repository": {
     "type": "git",
@@ -54,9 +53,6 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "ajv": "^8.20.0",
-    "ajv-formats": "^3.0.1",
     "cheerio": "^1.1.0",
     "commander": "^15.0.0",
     "fast-xml-parser": "^5.2.0",
@@ -70,6 +66,8 @@
     "@semantic-release/changelog": "^7.0.0",
     "@semantic-release/git": "^11.0.1",
     "@types/node": "^26.4.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "eslint": "^10.9.1",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
