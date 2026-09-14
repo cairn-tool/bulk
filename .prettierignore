@@ -1,0 +1,8 @@
+dist/
+node_modules/
+coverage/
+package-lock.json
+CHANGELOG.md
+
+# Fixtures are captured source responses; their bytes are what the parsers are tested against
+tests/fixtures/

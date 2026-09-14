@@ -1,0 +1,82 @@
+{
+  "name": "@cairn-tool/bulk",
+  "version": "0.0.0-development",
+  "type": "module",
+  "description": "Pull publisher catalogues into a document archive and look titles up by identifier — one plugin per data source",
+  "license": "MIT",
+  "author": "Bryan Stockus",
+  "keywords": [
+    "archive",
+    "cli",
+    "bulk-download",
+    "catalogue",
+    "ntsb",
+    "arxiv",
+    "crossref",
+    "internet-archive",
+    "mcp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cairn-tool/bulk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cairn-tool/bulk/issues"
+  },
+  "homepage": "https://github.com/cairn-tool/bulk#readme",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "bin": {
+    "bulk": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsc && chmod +x dist/cli.js",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "pretest": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run clean && npm run build",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "cheerio": "^1.1.0",
+    "commander": "^15.0.0",
+    "fast-xml-parser": "^5.2.0",
+    "fflate": "^0.8.2",
+    "yaml": "^2.8.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.0",
+    "@eslint/js": "^10.0.1",
+    "@semantic-release/changelog": "^7.0.0",
+    "@semantic-release/git": "^11.0.1",
+    "@types/node": "^26.4.0",
+    "eslint": "^10.9.1",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "prettier": "^3.4.0",
+    "semantic-release": "^25.0.9",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.68.0",
+    "vitest": "^5.0.0"
+  }
+}

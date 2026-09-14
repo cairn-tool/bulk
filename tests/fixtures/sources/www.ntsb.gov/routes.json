@@ -1,0 +1,29 @@
+[
+ {
+  "path": "/investigations/AccidentReports/_api/web/Lists/Reports/items",
+  "file": "reports-list.json",
+  "headers": {
+   "content-type": "application/json;odata=verbose"
+  }
+ },
+ {
+  "path": "/investigations/AccidentReports/Reports/AAR0003.pdf",
+  "file": "files/AAR0003.pdf"
+ },
+ {
+  "path": "/investigations/AccidentReports/Reports/MAR2401.pdf",
+  "file": "files/MAR2401.pdf"
+ },
+ {
+  "path": "/investigations/AccidentReports/Reports/HAB1808.pdf",
+  "file": "files/HAB1808.pdf"
+ },
+ {
+  "path": "/investigations/AccidentReports/Reports/HAB1808 .pdf",
+  "status": 200,
+  "headers": {
+   "content-type": "application/pdf"
+  },
+  "body": ""
+ }
+]

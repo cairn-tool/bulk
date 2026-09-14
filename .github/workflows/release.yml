@@ -1,0 +1,106 @@
+name: Release
+
+# Gated on CI rather than on push. Running both off `push` let a release publish
+# while the CI matrix was still red: v1.0.2 shipped declaring Node 20 support that
+# jsdom 30 does not have, because this job only ever tested the .nvmrc version.
+# Waiting for CI also means the whole support matrix has passed, and lets this job
+# skip re-running the tests.
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions: {}
+
+env:
+  # `npm ci` runs `prepare: husky`, which would install the commit-msg hook into the
+  # runner's checkout — and that hook would then reject semantic-release's own
+  # release commit. Git hooks have no purpose in CI.
+  HUSKY: 0
+
+jobs:
+  release:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    # Deliberately thin. Everything semantic-release *writes* goes through the
+    # app installation token minted below, not through GITHUB_TOKEN, because the
+    # main ruleset can only grant a bypass to an org-installed App -- and
+    # github-actions[bot] is not one.
+    permissions:
+      contents: read # checkout only
+      id-token: write # OIDC trusted publishing, and the provenance attestation
+    # Only for a green CI run on a push to main — not for PR CI runs.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main')
+    steps:
+      # Mints a short-lived installation token for the release App. It expires in
+      # an hour, so nothing long-lived is handed to the job beyond the App's own
+      # private key. The App is the ruleset's bypass actor; semantic-release
+      # pushing as github-actions[bot] is rejected by the required status checks.
+      - name: Mint a release token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.RELEASE_APP_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Explicit ref: a workflow_run checkout otherwise defaults to the default
+          # branch tip anyway, and naming it keeps us on a branch rather than a
+          # detached HEAD, which semantic-release needs in order to push.
+          ref: main
+          # semantic-release needs full history + tags to determine the last release
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          registry-url: https://registry.npmjs.org
+          scope: "@cairn-tool"
+
+      # Trusted publishing needs npm >= 11.5.1, and Node 22 bundles 10.9.7.
+      # @semantic-release/npm only *verifies* the OIDC exchange — it discards the
+      # token it gets back and lets `npm publish` perform the real exchange — so
+      # an npm that predates the feature loses its credentials at the last step,
+      # after the tag has already been written. Floating within a major so a
+      # security fix lands without a breaking CLI change arriving unannounced.
+      - name: Upgrade npm for trusted publishing
+        run: npm install -g npm@12
+
+      - run: npm ci
+
+      # No test step: this job only runs after the CI workflow went green across
+      # the full Node matrix, so re-running them here would duplicate that work.
+
+      # Auth precedence is the plugin's, not ours: verify-auth.js attempts the
+      # OIDC exchange first and only falls back to a token when that fails. So
+      # NPM_TOKEN is a bootstrap, not the intended path — npm configures a
+      # trusted publisher on an existing package's settings page, which a package
+      # that has never been published does not have. Publish once with the token,
+      # configure the trusted publisher against this workflow filename, then
+      # delete the secret; the fallback then has nothing to fall back to and
+      # every later release goes through OIDC.
+      #
+      # Provenance is automatic under trusted publishing. `publishConfig` still
+      # sets it explicitly so the bootstrap publish is attested too.
+      - name: semantic-release
+        env:
+          # The App installation token, not GITHUB_TOKEN: it authenticates the
+          # tag, the CHANGELOG commit, and the GitHub Release, and it is the
+          # identity the main ruleset grants a bypass to. The npm registry is a
+          # separate identity again.
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release

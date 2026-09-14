@@ -1,0 +1,86 @@
+{
+ "d": {
+  "results": [
+   {
+    "Id": 1,
+    "Title": "In-flight Breakup Over the Atlantic Ocean: Trans World Airlines Flight 800",
+    "NTSBReportNumber": "AAR-00/03",
+    "NTSBAccidentID": "DCA96MA070",
+    "NTSBKey": "12345",
+    "Mode": {
+     "results": [
+      "Aviation"
+     ]
+    },
+    "Report_x0020_Date_x0020_Adopted": "2000-08-23T00:00:00Z",
+    "Accident_x0020_Date": "1996-07-17T00:00:00Z",
+    "Modified": "2024-01-01T00:00:00Z",
+    "File": {
+     "Name": "AAR0003.pdf",
+     "ServerRelativeUrl": "/investigations/AccidentReports/Reports/AAR0003.pdf",
+     "Length": "353",
+     "TimeLastModified": "2024-01-01T00:00:00Z"
+    }
+   },
+   {
+    "Id": 2,
+    "Title": "Contact of Cargo Vessel with Bridge",
+    "NTSBReportNumber": "MAR-24/01",
+    "NTSBAccidentID": "DCA96MA070",
+    "NTSBKey": "12345",
+    "Mode": {
+     "results": [
+      "Marine"
+     ]
+    },
+    "Report_x0020_Date_x0020_Adopted": "2024-03-01T00:00:00Z",
+    "Accident_x0020_Date": "1996-07-17T00:00:00Z",
+    "Modified": "2024-01-01T00:00:00Z",
+    "File": {
+     "Name": "MAR2401.pdf",
+     "ServerRelativeUrl": "/investigations/AccidentReports/Reports/MAR2401.pdf",
+     "Length": "173",
+     "TimeLastModified": "2024-01-01T00:00:00Z"
+    }
+   },
+   {
+    "Id": 3,
+    "Title": "Highway brief",
+    "NTSBReportNumber": "HAB-18/08",
+    "NTSBAccidentID": "DCA96MA070",
+    "NTSBKey": "12345",
+    "Mode": null,
+    "Report_x0020_Date_x0020_Adopted": "2018-05-01T00:00:00Z",
+    "Accident_x0020_Date": "1996-07-17T00:00:00Z",
+    "Modified": "2024-01-01T00:00:00Z",
+    "File": {
+     "Name": "HAB1808.pdf",
+     "ServerRelativeUrl": "/investigations/AccidentReports/Reports/HAB1808.pdf",
+     "Length": "103",
+     "TimeLastModified": "2024-01-01T00:00:00Z"
+    }
+   },
+   {
+    "Id": 4,
+    "Title": "Highway brief",
+    "NTSBReportNumber": "HAB-18/08",
+    "NTSBAccidentID": "DCA96MA070",
+    "NTSBKey": "12345",
+    "Mode": {
+     "results": [
+      "Highway"
+     ]
+    },
+    "Report_x0020_Date_x0020_Adopted": "2018-05-01T00:00:00Z",
+    "Accident_x0020_Date": "1996-07-17T00:00:00Z",
+    "Modified": "2024-01-01T00:00:00Z",
+    "File": {
+     "Name": "HAB1808 .pdf",
+     "ServerRelativeUrl": "/investigations/AccidentReports/Reports/HAB1808 .pdf",
+     "Length": "77",
+     "TimeLastModified": "2024-01-01T00:00:00Z"
+    }
+   }
+  ]
+ }
+}

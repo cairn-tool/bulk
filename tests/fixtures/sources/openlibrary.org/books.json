@@ -1,0 +1,43 @@
+{
+ "ISBN:9780262033848": {
+  "title": "Introduction to Algorithms",
+  "authors": [
+   {
+    "name": "Thomas H. Cormen"
+   },
+   {
+    "name": "Charles E. Leiserson"
+   }
+  ],
+  "publish_date": "2009",
+  "publishers": [
+   {
+    "name": "MIT Press"
+   }
+  ],
+  "number_of_pages": 1312,
+  "subjects": [
+   {
+    "name": "Computer algorithms"
+   }
+  ],
+  "url": "https://openlibrary.org/books/OL22997803M/Introduction_to_algorithms"
+ },
+ "ISBN:9780071449595": {
+  "title": "Data Structures Demystified",
+  "subtitle": "A Self-Teaching Guide",
+  "authors": [
+   {
+    "name": "James Keogh"
+   }
+  ],
+  "publish_date": "2004",
+  "publishers": [
+   {
+    "name": "McGraw-Hill"
+   }
+  ],
+  "number_of_pages": 300,
+  "url": "https://openlibrary.org/books/OL1M"
+ }
+}

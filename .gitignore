@@ -1,0 +1,27 @@
+# Build output
+dist/
+*.tsbuildinfo
+*.js.map
+
+# Dependencies
+node_modules/
+
+# Test / tooling caches
+coverage/
+.vitest/
+.eslintcache
+
+# Packing artifacts
+*.tgz
+
+# OS / editor
+.DS_Store
+*.swp
+
+# Local agent state
+.claude/
+.codex/
+.agents/
+.cursor/
+.mcp.json
+work/
