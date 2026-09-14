@@ -8,7 +8,7 @@ import type { QueryAnswer, QueryRecord } from "../query/cache.js";
 import type { ListColumn } from "../query/emit.js";
 import type { QueryResults } from "../query/resolve.js";
 
-export type { Item } from "../pull/item.js";
+export type { Item, ItemRequest } from "../pull/item.js";
 export type { ListColumn } from "../query/emit.js";
 export type { QueryAnswer, QueryRecord } from "../query/cache.js";
 export type { QueryResults } from "../query/resolve.js";

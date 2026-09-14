@@ -1,0 +1,31 @@
+[
+ {
+  "path": "/works/10.1080/16000870.2018.1440870",
+  "file": "work.json",
+  "headers": {
+   "content-type": "application/json",
+   "x-rate-limit-limit": "10",
+   "x-rate-limit-interval": "1s",
+   "x-api-pool": "polite-single"
+  }
+ },
+ {
+  "path": "/works/10.6028/NIST.SP.800-53r5",
+  "file": "nist-work.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "path": "/works/10.1000/missing",
+  "status": 404,
+  "body": "Resource not found."
+ },
+ {
+  "path": "/works",
+  "file": "search.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ }
+]

@@ -1,0 +1,45 @@
+[
+ {
+  "path": "/treesearch",
+  "query": {
+   "page": "0"
+  },
+  "file": "search-p0.html"
+ },
+ {
+  "path": "/treesearch",
+  "query": {
+   "page": "1"
+  },
+  "file": "search-p1.html"
+ },
+ {
+  "path": "/treesearch/67890",
+  "file": "67890.html"
+ },
+ {
+  "path": "/treesearch/11111",
+  "file": "11111.html"
+ },
+ {
+  "path": "/sitemap.xml",
+  "query": {
+   "page": "1"
+  },
+  "file": "sitemap-1.xml",
+  "headers": {
+   "content-type": "application/xml"
+  }
+ },
+ {
+  "path": "/sitemap.xml",
+  "file": "sitemap.xml",
+  "headers": {
+   "content-type": "application/xml"
+  }
+ },
+ {
+  "path": "/download/treesearch/67890.pdf",
+  "file": "67890.pdf"
+ }
+]

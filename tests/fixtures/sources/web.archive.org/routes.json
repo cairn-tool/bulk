@@ -1,0 +1,29 @@
+[
+ {
+  "path": "/cdx/search/cdx",
+  "sequence": [
+   {
+    "status": 503,
+    "body": "busy"
+   },
+   {
+    "file": "cdx.json",
+    "headers": {
+     "content-type": "application/json"
+    }
+   }
+  ]
+ },
+ {
+  "path": "/web/20100301000000id_/http://www.pcisig.com/specifications/pciexpress/base.pdf",
+  "file": "base.pdf"
+ },
+ {
+  "path": "/web/20081001120000id_/http://www.pcisig.com/specifications/pciexpress/base.pdf",
+  "file": "base.pdf"
+ },
+ {
+  "path": "/web/20090101000000id_/http://www.pcisig.com/specifications/other",
+  "file": "other.pdf"
+ }
+]

@@ -1,0 +1,56 @@
+{
+ "message": {
+  "DOI": "10.1080/16000870.2018.1440870",
+  "type": "journal-article",
+  "title": [
+   "A title about ocean waves"
+  ],
+  "author": [
+   {
+    "given": "Ann",
+    "family": "Author"
+   },
+   {
+    "given": "Bob",
+    "family": "Writer"
+   },
+   {
+    "name": "Consortium"
+   }
+  ],
+  "container-title": [
+   "Tellus A"
+  ],
+  "publisher": "Informa UK Limited",
+  "issued": {
+   "date-parts": [
+    [
+     2018,
+     3,
+     7
+    ]
+   ]
+  },
+  "volume": "70",
+  "issue": "1",
+  "page": "1440870",
+  "ISSN": [
+   "1600-0870"
+  ],
+  "license": [
+   {
+    "URL": "http://creativecommons.org/licenses/by/4.0/"
+   }
+  ],
+  "reference-count": 42,
+  "is-referenced-by-count": 7,
+  "URL": "https://doi.org/10.1080/16000870.2018.1440870",
+  "link": [
+   {
+    "URL": "https://www.tandfonline.com/doi/pdf/10.1080/16000870.2018.1440870",
+    "content-type": "application/pdf",
+    "content-version": "vor"
+   }
+  ]
+ }
+}

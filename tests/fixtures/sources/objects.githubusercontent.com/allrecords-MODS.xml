@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mods:modsCollection xmlns:mods="http://www.loc.gov/mods/v3">
+<mods:mods version="3.7">
+  <mods:titleInfo><mods:title>Security and Privacy Controls for Information Systems and Organizations</mods:title></mods:titleInfo>
+  <mods:name type="corporate"><mods:namePart>Joint Task Force</mods:namePart></mods:name>
+  <mods:name type="personal"><mods:namePart>Ross</mods:namePart><mods:namePart>Ron</mods:namePart></mods:name>
+  <mods:genre authority="marcgt">technical report</mods:genre>
+  <mods:originInfo><mods:dateIssued encoding="marc">2020</mods:dateIssued></mods:originInfo>
+  <mods:subject><mods:topic>security controls</mods:topic></mods:subject>
+  <mods:subject><mods:topic>privacy</mods:topic></mods:subject>
+  <mods:identifier type="doi">10.6028/NIST.SP.800-53r5</mods:identifier>
+  <mods:location><mods:url>https://doi.org/10.6028/NIST.SP.800-53r5</mods:url></mods:location>
+  <mods:relatedItem type="series"><mods:titleInfo><mods:title>Special Publication (NIST SP)</mods:title></mods:titleInfo></mods:relatedItem>
+  <mods:abstract>Controls catalogue.</mods:abstract>
+</mods:mods>
+<mods:mods version="3.7">
+  <mods:titleInfo><mods:title>Circular of the Bureau of Standards no. 2</mods:title><mods:subTitle>An early one</mods:subTitle></mods:titleInfo>
+  <mods:originInfo><mods:dateIssued>1905</mods:dateIssued></mods:originInfo>
+  <mods:identifier type="doi">10.6028/NBS.CIRC.2e1</mods:identifier>
+  <mods:location><mods:url>https://doi.org/10.6028/NBS.CIRC.2e1</mods:url></mods:location>
+</mods:mods>
+<mods:mods version="3.7">
+  <mods:titleInfo><mods:title>A record with no DOI</mods:title></mods:titleInfo>
+</mods:mods>
+</mods:modsCollection>

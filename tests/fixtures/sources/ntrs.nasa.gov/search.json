@@ -1,0 +1,36 @@
+{
+ "results": [
+  {
+   "id": 19730060780,
+   "title": "Saturn V Flight Manual SA-503",
+   "otherReportNumbers": [
+    {
+     "otherReportNumber": "Report Number: MSFC-MAN-503"
+    },
+    "NASA-TM-X-72128"
+   ],
+   "publications": [
+    {
+     "publicationDate": "1968-11-01T00:00:00.000Z"
+    }
+   ],
+   "authorAffiliations": [
+    {
+     "meta": {
+      "author": {
+       "name": "Marshall Space Flight Center"
+      }
+     }
+    }
+   ],
+   "center": {
+    "code": "MSFC"
+   },
+   "stiTypeDetails": "Other - Flight Manual"
+  },
+  {
+   "id": 1,
+   "title": "Unrelated thing entirely"
+  }
+ ]
+}

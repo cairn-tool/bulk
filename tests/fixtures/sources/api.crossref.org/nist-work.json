@@ -1,0 +1,30 @@
+{
+ "message": {
+  "DOI": "10.6028/NIST.SP.800-53r5",
+  "type": "report",
+  "title": [
+   "Security and Privacy Controls for Information Systems and Organizations"
+  ],
+  "author": [
+   {
+    "name": "Joint Task Force"
+   }
+  ],
+  "publisher": "National Institute of Standards and Technology",
+  "issued": {
+   "date-parts": [
+    [
+     2020,
+     9
+    ]
+   ]
+  },
+  "institution": [
+   {
+    "name": "National Institute of Standards and Technology"
+   }
+  ],
+  "abstract": "<jats:p>Abstract text here.</jats:p>",
+  "URL": "https://doi.org/10.6028/nist.sp.800-53r5"
+ }
+}

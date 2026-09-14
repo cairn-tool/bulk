@@ -1,0 +1,41 @@
+[
+ {
+  "path": "/services/search/v1/scrape",
+  "file": "scrape.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "path": "/advancedsearch.php",
+  "file": "advanced.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "path": "/metadata/nasa_techdoc_19730060780",
+  "file": "metadata.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "path": "/metadata/*",
+  "body": "{}",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "path": "/download/nasa_techdoc_19730060780/19730060780.pdf",
+  "file": "nasa_techdoc_19730060780.pdf"
+ },
+ {
+  "path": "/download/nasa_techdoc_19730060780/19730060780_djvu.txt",
+  "body": "text text!",
+  "headers": {
+   "content-type": "text/plain"
+  }
+ }
+]

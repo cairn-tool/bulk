@@ -1,0 +1,78 @@
+{
+ "info": {
+  "total": 2
+ },
+ "docs": [
+  {
+   "pnx": {
+    "control": {
+     "recordid": [
+      "alma99123"
+     ]
+    },
+    "display": {
+     "title": [
+      "Soybean rust: a review"
+     ],
+     "creator": [
+      "Bromfield, K. R., Plant Pathologist, USDA ARS$$QBromfield, K. R."
+     ],
+     "contributor": [
+      "Someone Else$$QElse, S."
+     ],
+     "creationdate": [
+      "1984"
+     ],
+     "publisher": [
+      "APS Press"
+     ],
+     "type": [
+      "book"
+     ],
+     "language": [
+      "eng"
+     ],
+     "series": [
+      "Monograph (American Phytopathological Society) ; no. 11$$QMonograph"
+     ],
+     "subject": [
+      "Soybean rust",
+      "Phakopsora"
+     ],
+     "lds51": [
+      "NAL Collection"
+     ],
+     "description": [
+      "A review."
+     ]
+    },
+    "addata": {
+     "isbn": [
+      "0890540624"
+     ],
+     "doi": [
+      "10.1000/soy"
+     ],
+     "oclcid": [
+      "12345"
+     ]
+    }
+   }
+  },
+  {
+   "pnx": {
+    "control": {
+     "recordid": [
+      "alma99124"
+     ]
+    },
+    "display": {
+     "title": [
+      "Second match"
+     ]
+    },
+    "addata": {}
+   }
+  }
+ ]
+}

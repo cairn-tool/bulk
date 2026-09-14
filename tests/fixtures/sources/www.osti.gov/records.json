@@ -1,0 +1,48 @@
+[
+ {
+  "osti_id": 4144811,
+  "report_number": "ORNL-TM-2578",
+  "title": "Molten-Salt Reactor Program semiannual progress report",
+  "authors": [
+   "Rosenthal, M. W."
+  ],
+  "product_type": "Technical Report",
+  "publication_date": "1969-02-01T00:00:00Z",
+  "doi": "10.2172/4144811",
+  "research_orgs": [
+   "Oak Ridge National Lab. (ORNL)"
+  ],
+  "sponsor_orgs": [
+   "USDOE"
+  ],
+  "subjects": [
+   "22 GENERAL STUDIES OF NUCLEAR REACTORS"
+  ],
+  "links": [
+   {
+    "rel": "citation",
+    "href": "https://www.osti.gov/biblio/4144811"
+   },
+   {
+    "rel": "fulltext",
+    "href": "https://www.osti.gov/servlets/purl/4144811"
+   }
+  ]
+ },
+ {
+  "osti_id": 4144812,
+  "report_number": "ORNL-TM-2578-VOL.2",
+  "title": "Second volume",
+  "authors": [
+   "Someone"
+  ],
+  "product_type": "Technical Report",
+  "publication_date": "1969-08-01T00:00:00Z",
+  "links": [
+   {
+    "rel": "citation",
+    "href": "https://www.osti.gov/biblio/4144812"
+   }
+  ]
+ }
+]

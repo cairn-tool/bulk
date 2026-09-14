@@ -1,0 +1,16 @@
+[
+ {
+  "path": "/10.6028/NIST.SP.800-53r5",
+  "status": 302,
+  "headers": {
+   "location": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+  }
+ },
+ {
+  "path": "/10.6028/NBS.CIRC.2e1",
+  "status": 302,
+  "headers": {
+   "location": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/NBS.CIRC.2e1.pdf"
+  }
+ }
+]

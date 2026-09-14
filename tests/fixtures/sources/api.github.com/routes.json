@@ -1,0 +1,9 @@
+[
+ {
+  "path": "/repos/usnistgov/NIST-Tech-Pubs/releases/latest",
+  "file": "release.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ }
+]

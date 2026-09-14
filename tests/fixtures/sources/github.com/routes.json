@@ -1,0 +1,9 @@
+[
+ {
+  "path": "/usnistgov/NIST-Tech-Pubs/releases/download/Aug2026/allrecords-MODS.xml",
+  "status": 302,
+  "headers": {
+   "location": "https://objects.githubusercontent.com/x/allrecords-MODS.xml"
+  }
+ }
+]

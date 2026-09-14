@@ -1,0 +1,9 @@
+[
+ {
+  "path": "/primaws/rest/pub/pnxs",
+  "file": "pnxs.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ }
+]

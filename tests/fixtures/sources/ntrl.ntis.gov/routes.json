@@ -1,0 +1,45 @@
+[
+ {
+  "path": "/NTRL/dashboard/searchResults.xhtml",
+  "file": "search-page1.html",
+  "headers": {
+   "set-cookie": "JSESSIONID=ABC; Path=/NTRL; HttpOnly"
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/NTRL/dashboard/searchResults.xhtml;jsessionid=ABC",
+  "bodyIncludes": "javax.faces.ViewState=VS-1",
+  "requiresCookie": "JSESSIONID",
+  "file": "search-page2.xml",
+  "headers": {
+   "content-type": "text/xml"
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/NTRL/dashboard/searchResults/titleDetail/ORNLTM3177.xhtml;jsessionid=ABC",
+  "status": 200,
+  "headers": {
+   "content-type": "application/pdf"
+  },
+  "body": ""
+ },
+ {
+  "path": "/NTRL/dashboard/searchResults/titleDetail/ORNLTM3177.xhtml",
+  "file": "ORNLTM3177.html"
+ },
+ {
+  "path": "/NTRL/dashboard/searchResults/titleDetail/ADA130537.xhtml",
+  "file": "ADA130537.html"
+ },
+ {
+  "path": "/NTRL/dashboard/searchResults/titleDetail/N7113901.xhtml",
+  "file": "N7113901.html"
+ },
+ {
+  "path": "/NTRL/dashboard/searchResults/titleDetail/*",
+  "status": 404,
+  "body": "<html>no</html>"
+ }
+]

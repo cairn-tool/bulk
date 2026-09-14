@@ -1,0 +1,45 @@
+{
+ "metadata": {
+  "identifier": "nasa_techdoc_19730060780",
+  "title": "Saturn V Flight Manual SA-503",
+  "creator": [
+   "NASA"
+  ],
+  "date": "1968-11-01",
+  "mediatype": "texts",
+  "collection": [
+   "nasa_techdocs",
+   "nasa"
+  ],
+  "publisher": "NASA",
+  "language": "eng"
+ },
+ "files": [
+  {
+   "name": "19730060780.pdf",
+   "format": "Text PDF",
+   "size": "202",
+   "md5": "4d32ac3a837745706cb9c78034ed0d92",
+   "sha1": "65001592784d5368823d4b8bce457fe558f780fe",
+   "source": "original"
+  },
+  {
+   "name": "19730060780_djvu.txt",
+   "format": "DjVuTXT",
+   "size": "10",
+   "md5": "0",
+   "sha1": "0",
+   "source": "derivative"
+  },
+  {
+   "name": "__ia_thumb.jpg",
+   "format": "Item Tile",
+   "size": "5",
+   "md5": "0",
+   "sha1": "0",
+   "source": "derivative"
+  }
+ ],
+ "server": "ia1.us.archive.org",
+ "dir": "/x"
+}
