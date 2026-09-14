@@ -28,7 +28,6 @@ for (const stream of [process.stdout, process.stderr])
 
 // The configuration is read once, up front, so a malformed file is one clear
 // error before any command runs. The internal refresh reads the same file.
-// they read the same file.
 try {
   initializeRuntime();
 } catch (error) {
