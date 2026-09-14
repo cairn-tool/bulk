@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 export type Row = Record<string, unknown>;
+/** Anything with string keys; typed record interfaces qualify without an index signature. */
+export type RowLike = object;
 
 /**
  * A cell is one line: tabs, carriage returns and newlines become a space.
@@ -14,13 +16,13 @@ export function cell(value: unknown): string {
   return text.replace(/[\t\r\n]+/g, " ");
 }
 
-export function formatTsv(rows: readonly Row[], columns: readonly string[]): string {
+export function formatTsv(rows: readonly RowLike[], columns: readonly string[]): string {
   const lines = [columns.join("\t")];
-  for (const row of rows) lines.push(columns.map((c) => cell(row[c])).join("\t"));
+  for (const row of rows) lines.push(columns.map((c) => cell((row as Row)[c])).join("\t"));
   return lines.join("\n") + "\n";
 }
 
-export function writeTsv(file: string, rows: readonly Row[], columns: readonly string[]): void {
+export function writeTsv(file: string, rows: readonly RowLike[], columns: readonly string[]): void {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, formatTsv(rows, columns), "utf-8");
 }

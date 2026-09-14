@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"><ListRecords>
+<record><header><identifier>oai:e-publishing.cern.ch:article/95</identifier></header><metadata>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<dc:title>Introduction to accelerator physics</dc:title><dc:creator>Author, A.</dc:creator><dc:creator>Writer, B.</dc:creator>
+<dc:date>2015-03-01</dc:date><dc:identifier>https://e-publishing.cern.ch/index.php/CYR/article/view/95</dc:identifier>
+<dc:identifier>10.5170/CERN-2015-001.95</dc:identifier><dc:source>10.5170/CERN-2015-001</dc:source>
+<dc:relation>https://e-publishing.cern.ch/index.php/CYR/article/view/95/61</dc:relation><dc:format>application/pdf</dc:format>
+</oai_dc:dc></metadata></record>
+<resumptionToken completeListSize="2" cursor="0">tok-1</resumptionToken>
+</ListRecords></OAI-PMH>

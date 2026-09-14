@@ -1,0 +1,1 @@
+{"QueryGroups": [{"QueryRules": [{"FieldName": "EventDate", "Values": ["1900-01-01", "2099-12-31"], "Operator": "is in the range"}, {"FieldName": "Mode", "Values": ["Aviation"], "Operator": "is"}]}]}

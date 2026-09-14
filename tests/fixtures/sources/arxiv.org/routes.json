@@ -1,0 +1,17 @@
+[
+ {
+  "path": "/pdf/1706.03762v7",
+  "file": "1706.03762v7.pdf"
+ },
+ {
+  "path": "/pdf/cs/9901002v1",
+  "file": "cs-9901002v1.pdf"
+ },
+ {
+  "path": "/e-print/1706.03762v7",
+  "file": "1706.03762v7.tar.gz",
+  "headers": {
+   "content-type": "application/x-eprint-tar"
+  }
+ }
+]

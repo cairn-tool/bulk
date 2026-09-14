@@ -1,0 +1,76 @@
+[
+ {
+  "path": "/oai2d",
+  "query": {
+   "verb": "GetRecord"
+  },
+  "file": "oai-getrecord.xml",
+  "headers": {
+   "content-type": "text/xml"
+  }
+ },
+ {
+  "path": "/oai2d",
+  "query": {
+   "set": "cerncds:EMPTY"
+  },
+  "file": "oai-error.xml",
+  "headers": {
+   "content-type": "text/xml"
+  }
+ },
+ {
+  "path": "/oai2d",
+  "file": "oai-report.xml",
+  "headers": {
+   "content-type": "text/xml"
+  }
+ },
+ {
+  "path": "/record/2",
+  "requiresCookie": "anubis-auth",
+  "file": "record-2.html"
+ },
+ {
+  "path": "/record/2",
+  "file": "challenge.html",
+  "headers": {
+   "content-type": "text/html"
+  }
+ },
+ {
+  "path": "/.within.website/x/cmd/anubis/api/pass-challenge",
+  "status": 302,
+  "headers": {
+   "location": "/record/2",
+   "set-cookie": "techaro.lol-anubis-auth-test=eyJ.jwt; Path=/; Max-Age=3600; HttpOnly"
+  }
+ },
+ {
+  "path": "/search",
+  "requiresCookie": "anubis-auth",
+  "file": "search.xml",
+  "headers": {
+   "content-type": "text/xml"
+  }
+ },
+ {
+  "path": "/search",
+  "file": "challenge.html",
+  "headers": {
+   "content-type": "text/html"
+  }
+ },
+ {
+  "path": "/record/823808/files/CERN-2004-003-V-1.pdf",
+  "requiresCookie": "anubis-auth",
+  "file": "CERN-2004-003-V-1.pdf"
+ },
+ {
+  "path": "/record/823808/files/CERN-2004-003-V-1.pdf",
+  "file": "challenge.html",
+  "headers": {
+   "content-type": "text/html"
+  }
+ }
+]

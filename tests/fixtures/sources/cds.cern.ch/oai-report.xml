@@ -1,0 +1,10 @@
+<?xml version="1.0"?><OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"><ListRecords>
+<record><header><identifier>oai:cds.cern.ch:823808</identifier><datestamp>2026-01-01</datestamp></header><metadata>
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:controlfield tag="001">823808</marc:controlfield>
+<marc:datafield tag="035" ind1=" " ind2=" "><marc:subfield code="9">Inspire</marc:subfield><marc:subfield code="a">777</marc:subfield></marc:datafield>
+<marc:datafield tag="037" ind1=" " ind2=" "><marc:subfield code="a">CERN-2004-003-V-1</marc:subfield></marc:datafield>
+<marc:datafield tag="245" ind1=" " ind2=" "><marc:subfield code="a">CAS - CERN Accelerator School: Intermediate Course</marc:subfield></marc:datafield>
+<marc:datafield tag="260" ind1=" " ind2=" "><marc:subfield code="c">2004</marc:subfield></marc:datafield>
+<marc:datafield tag="856" ind1="4" ind2=" "><marc:subfield code="u">http://cds.cern.ch/record/823808/files/CERN-2004-003-V-1.pdf</marc:subfield><marc:subfield code="s">162</marc:subfield><marc:subfield code="y">Fulltext</marc:subfield></marc:datafield><marc:datafield tag="856" ind1="4" ind2=" "><marc:subfield code="u">http://cds.cern.ch/record/823808/files/CERN-2004-003-V-1.pdf?subformat=icon-700</marc:subfield><marc:subfield code="s">100</marc:subfield><marc:subfield code="y">Icon</marc:subfield></marc:datafield>
+</marc:record></metadata></record>
+<resumptionToken completeListSize="1"></resumptionToken></ListRecords></OAI-PMH>

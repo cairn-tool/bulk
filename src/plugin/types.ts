@@ -145,6 +145,8 @@ export interface FetchPlan {
   manifestItems?: Item[];
   /** The catalogue rows behind `list`, when they differ from the items (records without a file). */
   records?: Record<string, unknown>[];
+  /** Columns for `list` when the rows are not the manifest's shape (dockets list items when a docket is named). */
+  listColumns?: readonly ListColumn[];
   /** Lines printed after enumeration. */
   summary: string[];
   warnings?: string[];

@@ -1,0 +1,13 @@
+[
+ {
+  "path": "/api/literature",
+  "file": "literature.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "path": "/files/abc",
+  "file": "abc.pdf"
+ }
+]

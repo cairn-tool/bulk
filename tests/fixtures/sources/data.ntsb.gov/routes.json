@@ -1,0 +1,134 @@
+[
+ {
+  "method": "POST",
+  "path": "/Docket/Forms/searchdocket",
+  "bodyIncludes": "__RequestVerificationToken=TOK123",
+  "requiresCookie": "Antiforgery",
+  "file": "searchdocket-results.html"
+ },
+ {
+  "method": "POST",
+  "path": "/Docket/Forms/searchdocket",
+  "status": 400,
+  "body": "antiforgery token missing"
+ },
+ {
+  "path": "/Docket/Forms/searchdocket",
+  "file": "searchdocket-form.html",
+  "headers": {
+   "set-cookie": ".AspNetCore.Antiforgery.x=cookieval; path=/; samesite=strict; httponly"
+  }
+ },
+ {
+  "path": "/Docket",
+  "query": {
+   "ProjectID": "101"
+  },
+  "file": "docket-101.html"
+ },
+ {
+  "path": "/Docket",
+  "query": {
+   "ProjectID": "202"
+  },
+  "body": "<html><body><h3><b>Description:</b> Dali</h3><p>Docket Items: 0</p></body></html>                                                                                                                                                                                                        "
+ },
+ {
+  "path": "/Docket/Document/docBLOB",
+  "query": {
+   "ID": "5001"
+  },
+  "file": "blob-5001.pdf"
+ },
+ {
+  "path": "/Docket/Document/docBLOB",
+  "query": {
+   "ID": "5002"
+  },
+  "file": "blob-5002.zip"
+ },
+ {
+  "path": "/Docket/Document/docBLOB",
+  "query": {
+   "ID": "5003"
+  },
+  "status": 200,
+  "headers": {
+   "content-type": "application/pdf"
+  },
+  "body": ""
+ },
+ {
+  "method": "POST",
+  "path": "/carol-main-public/api/Session/CreateSession",
+  "body": "4242",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "path": "/carol-main-public/api/Query/BasicSearchTemplate",
+  "file": "carol-template.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/carol-main-public/api/Query/Main",
+  "bodyIncludes": "\"2019-01-01\"",
+  "body": "{\"ResultListCount\": 2}",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/carol-main-public/api/Query/Main",
+  "body": "{\"ResultListCount\": 0}",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/carol-main-public/api/Query/FileExport",
+  "bodyIncludes": "\"ExportFormat\":\"data\"",
+  "file": "cases-2019-data.zip"
+ },
+ {
+  "method": "POST",
+  "path": "/carol-main-public/api/Query/FileExport",
+  "bodyIncludes": "\"ExportFormat\":\"summary\"",
+  "file": "cases-2019-summary.zip"
+ },
+ {
+  "path": "/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/12345/pdf",
+  "file": "repgen-12345.pdf"
+ },
+ {
+  "path": "/avdata/",
+  "file": "avdata.html"
+ },
+ {
+  "path": "/avdata/FileDirectory/DownloadFile",
+  "query": {
+   "fileID": "1"
+  },
+  "file": "avall.zip"
+ },
+ {
+  "path": "/avdata/FileDirectory/DownloadFile",
+  "query": {
+   "fileID": "2"
+  },
+  "file": "up01SEP.zip"
+ },
+ {
+  "path": "/avdata/FileDirectory/DownloadFile",
+  "query": {
+   "fileID": "3"
+  },
+  "file": "dictionary.pdf"
+ }
+]

@@ -1,0 +1,37 @@
+[
+ {
+  "method": "POST",
+  "path": "/api/search",
+  "bodyIncludes": "\"AccessionNumber\",\"value\":\"ML11126A118\"",
+  "file": "ml11126.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/search",
+  "bodyIncludes": "PackagesFiledIn",
+  "file": "package.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/search",
+  "bodyIncludes": "ML00000000",
+  "file": "empty.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/search",
+  "file": "search.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ }
+]

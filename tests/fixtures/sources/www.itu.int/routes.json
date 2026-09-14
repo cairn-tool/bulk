@@ -1,0 +1,74 @@
+[
+ {
+  "path": "/mws/api/recommendations/searchRecs",
+  "query": {
+   "series": "G"
+  },
+  "file": "itut-G.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "path": "/mws/api/recommendations/searchRecs",
+  "file": "itut-empty.json",
+  "headers": {
+   "content-type": "application/json"
+  }
+ },
+ {
+  "path": "/rec/dologin_pub.asp",
+  "query": {
+   "id": "T-REC-G.997.2-202003-I!Cor1!PDF-E"
+  },
+  "file": "G.997.2.pdf"
+ },
+ {
+  "path": "/rec/dologin_pub.asp",
+  "query": {
+   "id": "T-REC-G.9962-201807-I!!PDF-E"
+  },
+  "file": "G.9962.html"
+ },
+ {
+  "path": "/rec/R-REC-M/en",
+  "file": "list-M.html",
+  "headers": {
+   "content-type": "text/html; charset=windows-1252"
+  }
+ },
+ {
+  "path": "/rec/R-REC-M.1036/en",
+  "file": "R-REC-M.1036.html",
+  "headers": {
+   "content-type": "text/html; charset=windows-1252"
+  }
+ },
+ {
+  "path": "/rec/R-REC-M.2101/en",
+  "file": "R-REC-M.2101.html",
+  "headers": {
+   "content-type": "text/html; charset=windows-1252"
+  }
+ },
+ {
+  "path": "/rec/R-REC-BO/en",
+  "body": "<html></html>"
+ },
+ {
+  "path": "/dms_pubrec/itu-r/rec/m/R-REC-M.1036-8-202602-I!!PDF-E.pdf",
+  "file": "M.1036-8.pdf"
+ },
+ {
+  "path": "/dms_pubrec/itu-r/rec/m/R-REC-M.1036-7-202010-I!!PDF-E.pdf",
+  "status": 404,
+  "body": "Document Not Found",
+  "headers": {
+   "content-type": "text/html"
+  }
+ },
+ {
+  "path": "/dms_pubrec/itu-r/rec/m/R-REC-M.2101-0-201702-I!!PDF-E.pdf",
+  "file": "M.1036-8.pdf"
+ }
+]

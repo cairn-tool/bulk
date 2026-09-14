@@ -56,7 +56,7 @@ export async function listAction(manifest: PluginManifest, raw: ListActionOption
     const plan = await system.plan(ctx, opts);
     const rows = plan.records ?? plan.items.map(manifestRow);
     const limited = ctx.limit ? rows.slice(0, ctx.limit) : rows;
-    const columns = manifest.fetch.listColumns;
+    const columns = plan.listColumns ?? manifest.fetch.listColumns;
     if (format === "json") {
       process.stdout.write(
         jsonPayload(

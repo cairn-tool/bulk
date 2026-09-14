@@ -1,0 +1,23 @@
+[
+ {
+  "path": "/index.php/CYR/oai",
+  "query": {
+   "resumptionToken": "tok-1"
+  },
+  "file": "oai-2.xml",
+  "headers": {
+   "content-type": "text/xml"
+  }
+ },
+ {
+  "path": "/index.php/CYR/oai",
+  "file": "oai-1.xml",
+  "headers": {
+   "content-type": "text/xml"
+  }
+ },
+ {
+  "path": "/index.php/CYR/article/download/95/61",
+  "file": "95-61.pdf"
+ }
+]

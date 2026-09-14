@@ -1,0 +1,27 @@
+[
+ {
+  "path": "/fedora/export/view/collection/noaa:6",
+  "query": {
+   "rows": "1"
+  },
+  "file": "noaa-6-1.json",
+  "headers": {
+   "content-type": "text/plain"
+  }
+ },
+ {
+  "path": "/fedora/export/view/collection/noaa:6",
+  "file": "noaa-6.json",
+  "headers": {
+   "content-type": "text/plain"
+  }
+ },
+ {
+  "path": "/view/noaa/436/noaa_436_DS1.pdf",
+  "file": "noaa_436_DS1.pdf"
+ },
+ {
+  "path": "/view/noaa/437/noaa_437_DS1.pdf",
+  "file": "noaa_437_DS1.pdf"
+ }
+]

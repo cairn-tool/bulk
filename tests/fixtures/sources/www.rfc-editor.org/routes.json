@@ -1,0 +1,48 @@
+[
+ {
+  "path": "/rfc-index.xml",
+  "file": "rfc-index.xml",
+  "headers": {
+   "content-type": "application/xml"
+  }
+ },
+ {
+  "path": "/rfc/rfc9000.pdf",
+  "file": "rfc9000.pdf"
+ },
+ {
+  "path": "/rfc/rfc1.pdf",
+  "status": 404,
+  "body": "<html>not found</html>",
+  "headers": {
+   "content-type": "text/html"
+  }
+ },
+ {
+  "path": "/rfc/pdfrfc/rfc1.txt.pdf",
+  "file": "rfc1.txt.pdf"
+ },
+ {
+  "path": "/rfc/rfc2.pdf",
+  "status": 404,
+  "body": "no",
+  "headers": {
+   "content-type": "text/html"
+  }
+ },
+ {
+  "path": "/rfc/pdfrfc/rfc2.txt.pdf",
+  "status": 404,
+  "body": "no",
+  "headers": {
+   "content-type": "text/html"
+  }
+ },
+ {
+  "path": "/rfc/rfc2.txt",
+  "body": "Network Working Group  RFC 2\n",
+  "headers": {
+   "content-type": "text/plain"
+  }
+ }
+]

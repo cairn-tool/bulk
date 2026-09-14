@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"><ListRecords>
+<record><header><identifier>oai:e-publishing.cern.ch:article/96</identifier></header><metadata>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<dc:title>A supplement with no galley</dc:title><dc:date>2016-01-01</dc:date><dc:identifier>10.5170/CERN-2016-002.7</dc:identifier><dc:source>10.5170/CERN-2016-002</dc:source>
+</oai_dc:dc></metadata></record>
+<resumptionToken completeListSize="2" cursor="1"></resumptionToken>
+</ListRecords></OAI-PMH>
