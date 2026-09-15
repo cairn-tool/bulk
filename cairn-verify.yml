@@ -1,0 +1,35 @@
+# What this repository installs into itself, and what a verification asserts
+# about the result. Kept out of `.cairn.yml` deliberately: any config file sets
+# `config.root` and confines a cairn workspace to this tree, which is more than
+# a dogfood install needs. Both commands take `--config` for exactly this case.
+#
+#   cairn agent install --config cairn-verify.yml
+#   cairn agent verify  --config cairn-verify.yml
+#
+# The install writes `.claude/`, `.codex/`, `.agents/` and `assets/` at the
+# repository root; all four are gitignored. Undo it with
+# `cairn agent uninstall bulk --target <target> --scope project --into .`.
+agent:
+  install:
+    targets: [claude-code, codex]
+    scope: project
+    into: .
+    bundles:
+      - path: plugins/bulk
+  verify:
+    defaults:
+      scope: project
+      profile: project
+      layout: merge
+      # `orphaned` reads the install inventory; `strict` would also walk the
+      # repository root's generated directories, which is more than this needs.
+      unmanaged: orphaned
+    entries:
+      - name: bulk-claude-code
+        bundle: plugins/bulk
+        target: claude-code
+        destination: .
+      - name: bulk-codex
+        bundle: plugins/bulk
+        target: codex
+        destination: .

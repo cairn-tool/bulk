@@ -45,6 +45,9 @@ export async function sourcesAction(opts: SourcesOptions): Promise<void> {
     const detail = `${"".padEnd(width)}  ${p.commands.join(", ")}  ·  ${p.hosts.map((h) => h.host).join(", ")}`;
     lines.push(human ? `${DIM}${detail}${RESET}` : detail);
   }
-  lines.push("", `${plugins.length} plugins. \`bulk <plugin> --help\` for a plugin's commands.`);
+  lines.push(
+    "",
+    `${plugins.length} plugins. \`bulk <plugin> --help\` for a plugin's commands, \`bulk <plugin> --docs\` for its documentation.`,
+  );
   process.stdout.write(lines.join("\n") + "\n");
 }

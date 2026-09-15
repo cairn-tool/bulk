@@ -37,6 +37,27 @@ bulk crossref query 10.1080/16000870.2018.1440870   # a Crossref record from a D
 - [Configuration](docs/configuration.md)
 - [Result contract](docs/contract.md)
 - [Development](docs/development.md)
+- [The agent plugin](docs/plugins.md)
+
+## Agent plugin
+
+`bulk` ships one plugin for coding assistants — a single skill that names every source in a line
+and reads a source's full documentation on demand with `bulk <plugin> --docs`. It is published
+to the `release` branch of this repository as the marketplace `bulk`:
+
+```text
+/plugin marketplace add cairn-tool/bulk@release      # Claude Code
+/plugin install bulk@bulk
+```
+
+```bash
+codex plugin marketplace add cairn-tool/bulk --ref release   # Codex
+codex plugin add bulk@bulk
+```
+
+Cursor and Antigravity, pinning a release, and installing from a checkout are in
+[The agent plugin](docs/plugins.md). The `bulk` binary is a separate install — the plugin
+invokes it, it does not carry it.
 
 ## Contributing
 

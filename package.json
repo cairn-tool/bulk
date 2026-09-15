@@ -31,6 +31,11 @@
   },
   "files": [
     "dist",
+    "docs/commands",
+    "docs/sources",
+    "docs/guide",
+    "docs/formats",
+    "docs/configuration.md",
     "README.md",
     "LICENSE"
   ],

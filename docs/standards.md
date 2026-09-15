@@ -5,13 +5,13 @@ the original tool was written to, with the file layout replaced by the plugin la
 
 ## The `bulk` command
 
-| Feature                 | What it means                                                                                                                                                                                      |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Help at every level** | `bulk --help`, `bulk <plugin> --help`, `bulk <plugin> <command> --help` — each with a description, the options, examples and the exit codes; `bulk sources` prints every plugin with its commands. |
-| **`--version`**         | The package version, managed by semantic-release.                                                                                                                                                  |
-| **Exit codes**          | `0` nothing failed · `1` usage, configuration or catalogue error · `2` something failed (the log or the output says what) · `130` interrupted with Ctrl-C.                                         |
-| **Errors**              | Usage errors and interruptions go to stderr; a command never prints a stack trace for an expected failure (a blocked host, a bad file, an empty body) — it records the failure and continues.      |
-| **Machine output**      | `--format json` on every command, through one write path, with a published schema; progress never lands on stdout.                                                                                 |
+| Feature                 | What it means                                                                                                                                                                                                                                                       |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Help at every level** | `bulk --help`, `bulk <plugin> --help`, `bulk <plugin> <command> --help` — each with a description, the options, examples and the exit codes; `bulk sources` prints every plugin with its commands, and `bulk <plugin> --docs` prints a source's full documentation. |
+| **`--version`**         | The package version, managed by semantic-release.                                                                                                                                                                                                                   |
+| **Exit codes**          | `0` nothing failed · `1` usage, configuration or catalogue error · `2` something failed (the log or the output says what) · `130` interrupted with Ctrl-C.                                                                                                          |
+| **Errors**              | Usage errors and interruptions go to stderr; a command never prints a stack trace for an expected failure (a blocked host, a bad file, an empty body) — it records the failure and continues.                                                                       |
+| **Machine output**      | `--format json` on every command, through one write path, with a published schema; progress never lands on stdout.                                                                                                                                                  |
 
 ## What every command does
 

@@ -12,15 +12,17 @@ Every plugin command accepts the [common options](commands/common.md) — `--for
 
 ## Global interface
 
-| Command                                             | Description                                                            |
-| --------------------------------------------------- | ---------------------------------------------------------------------- |
-| `bulk --help`                                       | Show top-level help.                                                   |
-| `bulk --version`                                    | Print the installed version.                                           |
-| [`bulk sources`](commands/sources.md)               | List every plugin, its commands, and the hosts it talks to.            |
-| [`bulk check-update`](commands/check-update.md)     | Query the configured npm registry for the latest published version.    |
-| [`bulk describe`](commands/describe.md)             | Describe the CLI contract: commands, options, exit codes, and schemas. |
-| [`bulk schema`](commands/schema.md)                 | Print a published output schema, or list the available schemas.        |
-| [`bulk completion <shell>`](commands/completion.md) | Print a shell completion script for bash, zsh, fish, or powershell.    |
+| Command                                             | Description                                                                           |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `bulk --help`                                       | Show top-level help.                                                                  |
+| `bulk --version`                                    | Print the installed version.                                                          |
+| [`bulk --docs`](commands/common.md#docs)            | Print the shared usage documentation: common behaviour, configuration and the guides. |
+| [`bulk <plugin> --docs`](commands/common.md#docs)   | Print a source's documentation: overview, access research and every command page.     |
+| [`bulk sources`](commands/sources.md)               | List every plugin, its commands, and the hosts it talks to.                           |
+| [`bulk check-update`](commands/check-update.md)     | Query the configured npm registry for the latest published version.                   |
+| [`bulk describe`](commands/describe.md)             | Describe the CLI contract: commands, options, exit codes, and schemas.                |
+| [`bulk schema`](commands/schema.md)                 | Print a published output schema, or list the available schemas.                       |
+| [`bulk completion <shell>`](commands/completion.md) | Print a shell completion script for bash, zsh, fish, or powershell.                   |
 
 ## Plugin commands
 

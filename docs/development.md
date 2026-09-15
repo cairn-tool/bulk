@@ -17,7 +17,12 @@ npm run format     # Prettier (write); `npm run format:check` in CI
 npm run typecheck  # tsc --noEmit
 
 node scripts/docs-commands.mjs   # regenerate docs/commands/<plugin>/*.md from the manifests
+node scripts/skill-sources.mjs   # regenerate the source list in the agent plugin's skill
+scripts/check-bundles.sh         # check the agent plugin for every host (needs `cairn` on PATH)
 ```
+
+The [agent plugin](plugins.md) under `plugins/bulk/` is built and installed with the same
+scripts CI uses.
 
 ## The test suites
 

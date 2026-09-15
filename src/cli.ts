@@ -5,6 +5,7 @@ import { Command } from "commander";
 import { CommandExit } from "./command-result.js";
 import { BASE_FORMATS } from "./formats.js";
 import { FETCH_COMMON, LIST_COMMON, QUERY_COMMON, applyOptions } from "./plugin/options.js";
+import type { DocsOptions } from "./commands/docs.js";
 import type { PluginManifest } from "./plugin/types.js";
 import { PLUGINS } from "./plugins/index.js";
 import { initializeRuntime } from "./runtime.js";
@@ -46,6 +47,9 @@ const FORMAT_HELP = `\nFormat shorthands:\n  -fh             Shorthand for --for
 
 const program = new Command()
   .name("bulk")
+  // The program's own options (--docs, --version) must precede a sub-command;
+  // otherwise `bulk <plugin> --docs` would be consumed here rather than by the plugin.
+  .enablePositionalOptions()
   .description(
     "Pull publisher catalogues into a document archive and look titles up by identifier.\n" +
       "One plugin per data source: `bulk <plugin> fetch|list|query`. Every fetch is resumable,\n" +
@@ -61,8 +65,17 @@ const program = new Command()
       "  bulk openlibrary query 9780262033848           a title from an ISBN\n" +
       "  bulk crossref query 10.1080/16000870.2018.1440870 --links\n" +
       "  bulk cache limits                              the per-host pacing in force\n" +
+      "  bulk ntsb-reports --docs                       a source's full documentation\n" +
       FORMAT_HELP,
-  );
+  )
+  .option(
+    "--docs",
+    "Print the shared usage documentation: common behaviour, configuration and the guides",
+  )
+  .action(async (opts: DocsOptions) => {
+    const { docsAction } = await import("./commands/docs.js");
+    return docsAction(null, opts, () => program.outputHelp({ error: true }));
+  });
 
 function common(command: Command): Command {
   return command
@@ -80,8 +93,18 @@ function registerPlugin(manifest: PluginManifest): void {
     .description(manifest.summary)
     .addHelpText(
       "after",
-      `\n${manifest.name}. Hosts: ${manifest.hosts.map((h) => h.host).join(", ")}.\n\`bulk ${manifest.id} <command> --help\` for a command's options.`,
-    );
+      `\n${manifest.name}. Hosts: ${manifest.hosts.map((h) => h.host).join(", ")}.\n\`bulk ${manifest.id} <command> --help\` for a command's options; \`bulk ${manifest.id} --docs\` for the full documentation of this source.`,
+    )
+    .option(
+      "--docs",
+      "Print this source's documentation: overview, access research and every command page",
+    )
+    // A group's action runs only when no sub-command is named; excess arguments
+    // are still rejected, so `bulk <plugin> nope` stays an error.
+    .action(async (opts: DocsOptions, cmd: Command) => {
+      const { docsAction } = await import("./commands/docs.js");
+      return docsAction(manifest, opts, () => cmd.outputHelp({ error: true }));
+    });
 
   if (manifest.fetch) {
     const fetch = manifest.fetch;

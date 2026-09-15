@@ -25,3 +25,13 @@ coverage/
 .cursor/
 .mcp.json
 work/
+
+# Plugin build output
+dist-plugins/
+plugins/*/.install/
+build/
+
+# In-repo dogfood install: `cairn agent install --config cairn-verify.yml`
+.cairn-install.json
+/assets/
+.cursor-plugin/

@@ -1,0 +1,81 @@
+# Contract tests: what this bundle must render. No tree digest -- one would
+# invalidate on every prose edit, and on every manifest change that regenerates
+# the source list.
+schemaVersion: "1"
+cases:
+  - name: renders-a-complete-claude-code-plugin
+    targets: [claude-code]
+    profiles: [plugin]
+    expect:
+      paths:
+        present:
+          - .claude-plugin/plugin.json
+          - skills/sources/SKILL.md
+          - assets/icon.svg
+        absent:
+          # One skill and nothing else: no subagent, hook, MCP server or rule,
+          # and a command here would be a skill -- there is no `commands` kind.
+          - agents/**
+          - hooks/**
+          - .mcp.json
+          - commands/**
+          - .claude/rules/**
+      json:
+        - path: .claude-plugin/plugin.json
+          contains:
+            name: bulk
+            version: 1.0.0
+
+  # `agents` and `hooks` are implied manifest fields. Declaring `agents` fails
+  # the whole manifest; declaring `hooks` drops the plugin's hooks. Neither is
+  # caught by `claude plugin validate`.
+  - name: manifest-omits-the-implied-fields
+    targets: [claude-code]
+    profiles: [plugin]
+    expect:
+      files:
+        - path: .claude-plugin/plugin.json
+          excludes: ['"agents"', '"hooks"']
+          includes: ['"skills"']
+
+  # The skill must self-activate: it is the only way an agent learns the tool
+  # exists. The exclusion is newline-anchored to the frontmatter line.
+  - name: the-skill-stays-model-invocable
+    targets: [claude-code]
+    profiles: [plugin]
+    expect:
+      files:
+        - path: skills/sources/SKILL.md
+          mode: "0644"
+          excludes: ["\ndisable-model-invocation: true\n"]
+
+  # The skill exists to send the agent to `--docs` rather than carry the docs.
+  # Losing that pointer, or the install line, would leave a list with no way in.
+  - name: the-skill-points-at-docs-and-names-the-sources
+    targets: [claude-code]
+    profiles: [plugin]
+    expect:
+      files:
+        - path: skills/sources/SKILL.md
+          includes:
+            - "bulk <plugin> --docs"
+            - "npm install -g @cairn-tool/bulk"
+            - "<!-- sources -->"
+            - "- `ntsb-reports` — "
+            - "- `openlibrary` — "
+            - "<!-- /sources -->"
+
+  # Cursor namespaces a plugin's skills on the frontmatter `name` as well as the
+  # path -- one component, one identity.
+  - name: the-cursor-plugin-namespaces-the-skill
+    targets: [cursor]
+    profiles: [plugin]
+    expect:
+      paths:
+        present:
+          - skills/bulk-sources/SKILL.md
+        absent:
+          - skills/sources/SKILL.md
+      files:
+        - path: skills/bulk-sources/SKILL.md
+          includes: ["name: bulk-sources"]

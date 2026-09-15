@@ -1,0 +1,30 @@
+# Portable agent bundle. Built as part of the collection:
+#   cairn agent marketplace ../../agent-marketplace.yaml --output ../../dist-plugins
+#
+# One skill, on purpose: it names every source in a line each and points at
+# `bulk <plugin> --docs` for the rest, so the plugin costs an agent session as
+# little context as possible. The source list inside the skill is generated
+# from the plugin manifests by scripts/skill-sources.mjs; do not edit it by hand.
+schemaVersion: "2"
+name: bulk
+version: 1.0.0
+description: Pull publisher catalogues into a document archive and look titles up by identifier with the bulk CLI.
+
+marketplace:
+  displayName: Bulk
+  summary: Resumable, verified bulk downloads from publisher catalogues, and identifier lookups.
+  description: >-
+    One plugin per data source — NTSB, arXiv, CERN, Crossref, NIST, NRC ADAMS,
+    NTIS, NASA NTRS, OSTI, USDA, the Internet Archive and more. Every fetch
+    enumerates the source's own catalogue, verifies every file and resumes;
+    every query turns ISBNs, DOIs, accession numbers and report designations
+    into records. The skill lists the sources in a line each and reads the full
+    documentation of one on demand with `bulk <plugin> --docs`. Wraps the
+    `bulk` CLI, which must be installed separately.
+  categories: [productivity, developer-tools]
+  keywords: [archive, documents, download, catalogue, ntsb, arxiv, crossref, doi, isbn]
+  publisher:
+    name: Bryan Stockus
+    url: https://github.com/cairn-tool
+  license: MIT
+  icon: assets/icon.svg

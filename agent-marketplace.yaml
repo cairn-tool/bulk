@@ -1,0 +1,25 @@
+# The collection published by `.github/workflows/plugins.yml` to the `release`
+# branch, one tree per target under one root. Build it with:
+#   cairn agent marketplace agent-marketplace.yaml --output ./dist-plugins
+# Install it locally with:
+#   cairn agent marketplace agent-marketplace.yaml --install --register
+schemaVersion: "1"
+name: bulk
+version: 1.0.0
+description: The bulk CLI, as a plugin.
+owner:
+  name: Bryan Stockus
+  url: https://github.com/cairn-tool
+
+# Every host the release branch serves. The first three declare a marketplace
+# catalog; Antigravity does not, so it gets a rendered tree and no catalog and is
+# installed straight from the published sources under `bundles/`.
+#
+# OpenCode is deliberately absent. Its profile declares no *user*-scope install
+# location at all, so nothing on a release branch can be installed for it; it is
+# a project-scope merge, which `agent install` does from a checkout.
+# `scripts/check-bundles.sh` still renders and checks the bundle for all five.
+targets: [claude-code, codex, cursor, antigravity]
+
+bundles:
+  - path: plugins/bulk

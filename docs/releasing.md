@@ -23,12 +23,18 @@ publish are all derived from the commit messages since the last release.
    tags, creates the GitHub Release, and publishes to npm through OIDC trusted publishing with a
    provenance attestation.
 
+4. `plugins.yml` triggers when `release.yml` completes and publishes the
+   [agent plugin](plugins.md) to the `release` branch — a fast-forward commit of the built
+   marketplace tree, tagged `release-v<version>`. The bundle's own version is hand-owned.
+
 ## What semantic-release does not own
 
 - `CONTRACT_VERSION` in `src/contract/version.ts` — the version of the contract surface, bumped by
   hand only when the envelope, the `describe` payload or the schema id scheme changes shape. See
   [the contract](contract.md).
 - The configuration `version` (`1`) — bumped only when the file's shape changes incompatibly.
+- The [agent plugin](plugins.md)'s `version` in `plugins/bulk/agent-bundle.yaml` and
+  `agent-marketplace.yaml` — bumped by hand with the content.
 
 ## Setting up a fork
 

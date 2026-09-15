@@ -69,6 +69,31 @@ describe("documentation completeness", () => {
     expect(r.status, r.stderr).toBe(0);
   });
 
+  it("has an agent skill that lists every source (node scripts/skill-sources.mjs)", () => {
+    // The block between the markers is generated from the manifests; the check
+    // runs against dist/ like the command pages. The direct assertions hold even
+    // if the generator itself is broken.
+    const skill = fs.readFileSync(
+      path.join(repoRoot, "plugins", "bulk", "skills", "sources", "SKILL.md"),
+      "utf-8",
+    );
+    for (const { manifest } of PLUGINS) {
+      expect(skill, `skill names ${manifest.id}`).toContain(`- \`${manifest.id}\` — `);
+      expect(skill, `skill carries the summary of ${manifest.id}`).toContain(manifest.summary);
+    }
+    expect(skill).toContain("bulk <plugin> --docs");
+    const r = spawnSync(process.execPath, ["scripts/skill-sources.mjs", "--check"], {
+      cwd: repoRoot,
+      encoding: "utf-8",
+    });
+    expect(r.status, r.stderr).toBe(0);
+  });
+
+  it("documents the --docs flag that prints the pages themselves", () => {
+    expect(read("commands/common.md")).toContain("## Docs");
+    expect(commands).toContain("`bulk <plugin> --docs`");
+  });
+
   it("has the shared pages", () => {
     for (const page of [
       "commands/common.md",
@@ -85,6 +110,7 @@ describe("documentation completeness", () => {
       "guide/bot-challenges.md",
       "guide/writing-a-plugin.md",
       "standards.md",
+      "plugins.md",
     ]) {
       expect(exists(page), page).toBe(true);
       expect(contents).toContain(`(${page})`);

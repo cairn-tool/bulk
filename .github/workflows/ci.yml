@@ -108,3 +108,93 @@ jobs:
           --from ${{ github.event.pull_request.base.sha }}
           --to ${{ github.event.pull_request.head.sha }}
           --verbose
+
+  plugins:
+    name: Plugin bundles
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      # This repository holds the bundle, not cairn: the CLI that renders it is
+      # a published package, installed here the way a user installs it.
+      - run: npm install -g @cairn-tool/cairn
+
+      # Every bundle against every target, one bundle at a time so a failure
+      # names the bundle rather than the collection. The gating rule is in
+      # scripts/check-bundles.sh, and the short version is that it cannot be the
+      # exit code: `agent validate` and `agent convert` route through
+      # `hasFindings`, which fails on any `approximate` diagnostic, and only
+      # claude-code renders these bundles with no findings at all. The other
+      # four carry warnings that are properties of the host (AB302, AB310,
+      # AB332, AB340, AB370), so they are gated on `error` diagnostics while
+      # claude-code keeps the exit-0 bar it has always had.
+      #
+      # Marketplace publishing stays claude-code-only; this is a rendering and
+      # portability check, and it needs no catalog. antigravity and opencode
+      # declare no marketplace concept at all.
+      - name: Validate, convert, doctor, test, and audit each bundle, on every target
+        run: scripts/check-bundles.sh --output "$RUNNER_TEMP/conv"
+
+      # The dogfood install, into the checkout itself. scripts/README.md has
+      # always said CI does this and nothing did, which is how `assets/icon.svg`
+      # came to collide across every pair of bundles (AB808) with the whole run
+      # refusing to write anything, unnoticed. check-bundles.sh renders each
+      # bundle alone, so it cannot see a conflict that only exists between two
+      # of them at one destination; this is the only step that does. Nothing
+      # downstream reads the working tree, so the files it leaves are harmless.
+      - name: Install every bundle into this repository, then verify it
+        run: >-
+          cairn agent install --config cairn-verify.yml &&
+          cairn agent verify --config cairn-verify.yml
+
+      # Two builds, because --strict is only meaningful for one of the three
+      # targets. Codex and Cursor carry `approximate` diagnostics inherently, so
+      # a --strict build covering them would be permanently red; without the flag
+      # `agent marketplace` still blocks on errors, which is what a missing
+      # catalog field (AB500) or icon (AB502) is. Claude Code renders these
+      # bundles with no findings at all, so it keeps the zero-warning bar it has
+      # always had -- narrowed with --target, which may narrow the spec but never
+      # widen it.
+      - name: Build the Claude Code collection under --strict
+        run: >-
+          cairn agent marketplace agent-marketplace.yaml
+          --target claude-code --output "$RUNNER_TEMP/marketplace-strict" --strict
+
+      - name: Build the collection for every declared target
+        run: >-
+          cairn agent marketplace agent-marketplace.yaml
+          --output "$RUNNER_TEMP/marketplace"
+
+      # The tree that actually ships. Built here so a PR proves the release
+      # layout still assembles -- the source bundles, the hoisted catalogs and
+      # the manifest are only exercised by this layout, and `Plugins` runs too
+      # late to catch a break in it.
+      - name: Build the release tree
+        run: >-
+          cairn agent marketplace agent-marketplace.yaml
+          --layout release --output "$RUNNER_TEMP/release"
+          --source-commit "$(git rev-parse HEAD)"
+
+      # Proves a published source bundle still renders: it is installed from the
+      # release tree, not from plugins/, so a resource the publisher failed to
+      # carry across would fail right here rather than on someone's machine.
+      - name: Install a published source bundle
+        run: >-
+          cairn agent install "$RUNNER_TEMP/release/bundles/bulk"
+          --target antigravity --scope user --into "$RUNNER_TEMP/from-release"
+
+      # So a reviewer can `/plugin marketplace add` the built tree from a PR.
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: bulk-plugins
+          path: ${{ runner.temp }}/release
+          include-hidden-files: true

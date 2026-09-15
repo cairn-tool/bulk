@@ -15,6 +15,17 @@ guarantees under them. A command page lists only the options particular to it.
 `-fh` expands to `--format=human` and `-fj` to `--format=json` before argument parsing. The
 configured `output.format` is the default when no flag is given.
 
+## Docs
+
+`bulk <plugin> --docs` prints the source's documentation to stdout, verbatim from this
+repository's `docs/` (which ships in the package): the [overview](../sources.md), the access
+research, then one page per sub-command, each under a comment naming its path
+(`<!-- docs/sources/<id>/overview.md -->`). `bulk --docs` prints the shared pages instead: this
+page, the [configuration](../configuration.md), and the fetching, querying, rate-limiting and
+bot-challenge [guides](../guide.md). Like `--help`, the flag takes no `--format` — the document
+is the output. A plugin named with neither a sub-command nor `--docs` prints its help and exits
+`1`, as before.
+
 ## Fetch
 
 | Option               | Default | Description                                                                                                                |

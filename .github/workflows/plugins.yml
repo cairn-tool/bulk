@@ -1,0 +1,119 @@
+name: Plugins
+
+# Gated on Release rather than on CI, because semantic-release has committed the
+# version bump by then — so the provenance this job records names a version that
+# was actually cut. CI is the gate that guards Release, so a red matrix still
+# cannot reach here.
+#
+# This is the third link in a workflow_run chain (CI -> Release -> Plugins).
+# Chained workflow_run is not documented as prohibited, but if it turns out not
+# to fire, add a `gh workflow run Plugins --ref main` step to release.yml with
+# `actions: write` on that job. workflow_dispatch stays either way.
+on:
+  workflow_run:
+    workflows: ["Release"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      targets:
+        description: Space-separated targets to narrow the build to (debugging only)
+        required: false
+
+concurrency:
+  group: plugins
+  cancel-in-progress: false
+
+permissions: {}
+
+env:
+  # Empty means "every target the spec declares", which is the normal case. The
+  # input exists only to reproduce a single target's tree when debugging.
+  NARROW_TARGETS: ${{ inputs.targets || '' }}
+
+jobs:
+  publish:
+    name: Publish the release branch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # the release branch and its tag
+    # No `workflow_run.event == 'push'` clause here, unlike release.yml. The
+    # triggering run is Release, which is itself workflow_run-triggered by CI, so
+    # its event is `workflow_run` and never `push` -- copying release.yml's guard
+    # verbatim made this job skip silently on every release.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          # publish-release-branch.sh adds a worktree on the fetched release tip,
+          # which a shallow clone cannot do.
+          fetch-depth: 0
+          # publish-release-branch.sh authenticates its remote inline instead.
+          persist-credentials: false
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      # This repository holds the bundle, not cairn: the CLI that renders it is
+      # a published package, installed here the way a user installs it.
+      - run: npm install -g @cairn-tool/cairn
+
+      # No validate/test/audit here: the `plugins` job in CI already ran them
+      # across every target, and Release only fires on a green CI. Same reasoning
+      # as release.yml's missing test step.
+      #
+      # Deliberately not --strict. Codex, Cursor and Antigravity inherently carry
+      # `approximate` diagnostics (AB302, AB310, AB332, AB340, AB370) that are
+      # properties of the host. `agent marketplace` still blocks on errors without
+      # the flag, and CI holds the published Claude Code tree to the zero-warning
+      # bar separately.
+      #
+      # No --stamp-version: this repository's bundles carry their own versions,
+      # deliberately independent of the CLI's. See docs/plugins.md.
+      - name: Build the release tree
+        run: |
+          set -euo pipefail
+          narrow=""
+          for target in $NARROW_TARGETS; do narrow="$narrow --target $target"; done
+          # shellcheck disable=SC2086  # deliberate word splitting of the flag list
+          cairn agent marketplace agent-marketplace.yaml \
+            --layout release \
+            --output "$RUNNER_TEMP/release" \
+            --source-commit "$(git rev-parse HEAD)" \
+            --readme "$GITHUB_REPOSITORY" $narrow
+
+      # One branch, fast-forwarded, never force-pushed. Claude Code's background
+      # refresh runs `git pull` inside each user's clone of this branch, so a
+      # rewritten history breaks the update path for every existing install.
+      # That is why this replaced the three per-target branches that were each
+      # force-pushed from a fresh repository on every release.
+      - name: Publish it
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_DIR: ${{ runner.temp }}/release
+        run: |
+          set -euo pipefail
+          version=$(jq -r .version "$RUNNER_TEMP/release/release-manifest.json")
+          echo "version=$version" >> "$GITHUB_ENV"
+          scripts/publish-release-branch.sh "$version"
+
+      - name: Summary
+        run: |
+          set -euo pipefail
+          {
+            echo "Published \`release\` @ \`${version}\` from \`${GITHUB_SHA::7}\`."
+            echo
+            echo "| Target | Catalog |"
+            echo "| ------ | ------- |"
+            jq -r '.targets | to_entries[] | "| `\(.key)` | \(if .value.catalog then "`" + .value.catalog + "`" else "_none — install from `bundles/`_" end) |"' \
+              "$RUNNER_TEMP/release/release-manifest.json"
+            echo
+            echo '```text'
+            echo "/plugin marketplace add ${GITHUB_REPOSITORY}@release"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

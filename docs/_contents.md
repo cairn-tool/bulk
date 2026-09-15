@@ -19,6 +19,7 @@ This directory is the reference documentation for `bulk`.
 - [Update checks](update-checks.md)
 - [Development](development.md)
 - [Releasing](releasing.md)
+- [The agent plugin](plugins.md)
 - [Future enhancements](future-enhancements.md)
 
 ## Guides

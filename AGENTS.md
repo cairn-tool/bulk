@@ -24,6 +24,10 @@ src/config.ts, paths.ts, runtime.ts   config.yml, XDG dirs + BULK_* env, the pro
 src/contract/              command registry generated from manifests; describe; schemas
 src/completion/, update-notifier.ts   cairn ports
 scripts/docs-commands.mjs  regenerates docs/commands/<plugin>/*.md from dist manifests
+scripts/skill-sources.mjs  regenerates the source list in plugins/bulk/skills/sources/SKILL.md from dist manifests
+plugins/bulk/              the agent plugin (a cairn agent bundle): one skill, an icon, render contract tests
+agent-marketplace.yaml, cairn-verify.yml   the collection spec CI publishes, and the in-repo dogfood install/verify
+scripts/{check-bundles,install-*,publish-release-branch}.sh   cairn's plugin scripts, copied; need `cairn` on PATH
 tests/{unit,integration,e2e}, tests/helpers, tests/fixtures/sources/<host>/
 docs/                      see docs/_contents.md; docs/guide/writing-a-plugin.md is the plugin checklist
 ```
@@ -34,7 +38,9 @@ test, an integration test through `PluginHarness`, `docs/sources/<id>/{overview,
 generated `docs/commands/<id>/*.md`, and lines in `docs/_contents.md`, `docs/commands.md`,
 `docs/sources.md`. `tests/unit/docs.test.ts` and `tests/unit/plugin-manifests.test.ts` name what is
 missing. Everything the contract, `describe`, completion and the docs know about a command comes
-from the manifest; there is no second list to update.
+from the manifest; there is no second list to update. The agent plugin's skill lists every source
+from the same manifests: run `node scripts/skill-sources.mjs` after the build (its `--check` is in
+the docs test) and bump the bundle version in `plugins/bulk/agent-bundle.yaml`.
 
 ## Conventions
 
@@ -49,6 +55,10 @@ from the manifest; there is no second list to update.
   Unknown config keys are errors.
 - A fetch **requires** a destination (`--dest` or `plugins.<id>.dest`); there is no derived default.
 - Progress and status lines go to **stderr**; stdout carries only the result.
+- `bulk <plugin> --docs` and `bulk --docs` print pages from `docs/` verbatim, so `docs/commands`,
+  `docs/sources`, `docs/guide`, `docs/formats` and `docs/configuration.md` ship in the tarball
+  (`package.json` `files`; the packaging test checks). The program's own options are positional
+  (`enablePositionalOptions`) so the plugin groups can carry their own `--docs`.
 - Sort with byte comparison (`byteCompare`), never `localeCompare`. Names come from `cleanTitle`
   and `safeName`, ported character-for-character from the Python.
 - Manifests import only types. `src/cli.ts` statically imports `./plugins/index.js` (manifests)
